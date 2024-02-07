@@ -53,11 +53,17 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    # - name: Configure AWS credentials
+    #   uses: aws-actions/configure-aws-credentials@v1
+    #   with:
+    #     role-to-assume: arn:aws:iam::296851752807:role/my-github-iam-role
+    #     role-session-name: GitHub_to_AWS_via_FederatedOIDC
+    #     aws-region: us-east-1
+
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: arn:aws:iam::296851752807:role/my-github-iam-role
-        role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: us-east-1
 
     - name: Login to Amazon ECR
